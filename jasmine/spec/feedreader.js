@@ -81,7 +81,7 @@ $(function() {
           * should have two expectations: does the menu display when
           * clicked and does it hide when clicked again.
           */
-         it ("visibility changes when clicked", function () {
+        it("visibility changes when clicked", function () {
 
             if (bodyClass.classList.contains('menu-hidden')) {
                 expect(menuVisible).toBe(true);
@@ -89,7 +89,7 @@ $(function() {
             else {
                 expect(menuVisible).toBe(false);
             }
-         });
+        });
 
     });
 
@@ -102,6 +102,14 @@ $(function() {
          * Remember, loadFeed() is asynchronous so this test will require
          * the use of Jasmine's beforeEach and asynchronous done() function.
          */
+
+        beforeEach(function(done) {
+          loadFeed(0, done);
+          });
+
+        it('loadFeed is complete and contains at least one entry', function() {
+          expect(allFeeds.length).not.toBe(0);
+        });
 
     });
 
