@@ -32,10 +32,10 @@ $(function() {
          * and that the URL is not empty.
          */
 
-         it('URL is defined', function() {
-           for(var i = 0; i < allFeeds.length; i++) {
-              expect(allFeeds[i].url).toBeDefined();
-              expect(allFeeds[i].url).not.toEqual('');
+        it('URL is defined', function() {
+          for(var i = 0; i < allFeeds.length; i++) {
+            expect(allFeeds[i].url).toBeDefined();
+            expect(allFeeds[i].url).not.toEqual('');
             }
          });
 
@@ -124,20 +124,21 @@ $(function() {
          * Remember, loadFeed() is asynchronous.
          */
 
-         beforeEach(function(done) {
-           loadFeed(0, done); // see init()
-           });
+        let currentFeedOne;
+        let currentFeedTwo;
+        currentFeedOne = document.querySelector('.feed').innerHTML;
+        beforeEach(function(done) {
+          loadFeed(0, function() {
+            currentFeedOne = document.querySelector('.feed').innerHTML;
+            done();
+          });
+        });
 
-         it('feed content changes', function() {
+        it('feed content changes', function(done) {
+          loadFeed(1, done);
+            expect(currentFeedTwo).not.toEqual(currentFeedOne);
+          });
 
-           let feed = document.querySelector('.feed');
-           let entries = feed.getElementsByClassName('entry');
-
-           for(var i = 0; i < entries.length; i++) {
-              expect(entries[i].innerHTML).not.toEqual(entries[(i - 1).innerHTML]);
-           }
-
-         });
 
     });
 
