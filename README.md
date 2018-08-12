@@ -6,10 +6,12 @@ The feed reader testing project uses Jasmine for the testing framework.
 ## Instructions For Running
 
 1. Open the index.html page in a browser window
-2. When loaded, all tests will run and results will be displayed at the bottom of the screen
-2. To run a test suite, click on the test suite title
-3. To run on an individual test, click on a test suite subtitle
-
+2. When loaded, all tests will run automatically and results will be displayed at the bottom of the screen
+3. To run a test suite, click on the test suite title
+4. To run an individual test, click on a test suite subtitle
+5. Green indicates test pass; Red indicates test failure
+6. In the case of test failure(s), the number of tests that fail is indicated at the top of the readout
+7. The location of the failure(s) is indicated in the error readout
 
 ## Dependencies
 
