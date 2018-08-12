@@ -104,7 +104,7 @@ $(function() {
          */
 
         beforeEach(function(done) {
-          loadFeed(0, done);
+          loadFeed(0, done); //see init()
           });
 
         it('loadFeed is complete and contains at least one entry', function() {
@@ -120,6 +120,17 @@ $(function() {
          * by the loadFeed function that the content actually changes.
          * Remember, loadFeed() is asynchronous.
          */
+
+         beforeEach(function(done) {
+           loadFeed(0, done); // see init()
+           });
+
+         it('feed content changes', function() {
+           for(var i = 0; i < allFeeds.length; i++) {
+              expect(allFeeds[i]).not.toEqual(allFeeds[i - 1]);
+           }
+
+         });
 
     });
 
