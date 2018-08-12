@@ -129,8 +129,12 @@ $(function() {
            });
 
          it('feed content changes', function() {
-           for(var i = 0; i < allFeeds.length; i++) {
-              expect(allFeeds[i]).not.toEqual(allFeeds[i - 1]);
+
+           let feed = document.querySelector('.feed');
+           let entries = feed.getElementsByClassName('entry');
+
+           for(var i = 0; i < entries.length; i++) {
+              expect(entries[i].innerHTML).not.toEqual(entries[(i - 1).innerHTML]);
            }
 
          });
