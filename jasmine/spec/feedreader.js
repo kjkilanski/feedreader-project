@@ -32,10 +32,10 @@ $(function() {
          * and that the URL is not empty.
          */
 
-        it('URL is defined', function() {
-          for(var i = 0; i < allFeeds.length; i++) {
-            expect(allFeeds[i].url).toBeDefined();
-            expect(allFeeds[i].url).not.toEqual('');
+         it('URL is defined', function() {
+           for(var i = 0; i < allFeeds.length; i++) {
+             expect(allFeeds[i].url).toBeDefined();
+             expect(allFeeds[i].url).not.toEqual('');
             }
          });
 
@@ -60,10 +60,10 @@ $(function() {
         let menuVisible;
 
         if (bodyClass.classList.contains('menu-hidden')) {
-        menuVisible = true;
+        menuVisible = false;
         }
         else {
-        menuVisible = false;
+        menuVisible = true;
         }
 
         /* TODO: Write a test that ensures the menu element is
@@ -73,7 +73,7 @@ $(function() {
          */
 
          it('is hidden by default', function() {
-            expect(menuVisible).toBe(true);
+            expect(menuVisible).toBe(false);
          });
 
          /* TODO: Write a test that ensures the menu changes
@@ -84,10 +84,10 @@ $(function() {
         it("visibility changes when clicked", function () {
 
             if (bodyClass.classList.contains('menu-hidden')) {
-                expect(menuVisible).toBe(true);
+                expect(menuVisible).toBe(false);
             }
             else {
-                expect(menuVisible).toBe(false);
+                expect(menuVisible).toBe(true);
             }
         });
 
@@ -126,7 +126,6 @@ $(function() {
 
         let currentFeedOne;
         let currentFeedTwo;
-        currentFeedOne = document.querySelector('.feed').innerHTML;
         beforeEach(function(done) {
           loadFeed(0, function() {
             currentFeedOne = document.querySelector('.feed').innerHTML;
@@ -134,11 +133,13 @@ $(function() {
           });
         });
 
-        it('feed content changes', function(done) {
-          loadFeed(1, done);
+        it('feed content changes when new feed loaded', function(done) {
+          loadFeed(1, function() {
+            currentFeedTwo = document.querySelector('.feed').innerHTML;
             expect(currentFeedTwo).not.toEqual(currentFeedOne);
+            done();
           });
-
+        });
 
     });
 
