@@ -108,8 +108,9 @@ $(function() {
           });
 
         it('loadFeed is complete and contains at least one entry', function() {
-          let feed = document.querySelector('.feed')
+          let feed = document.querySelector('.feed');
           let entries = feed.getElementsByClassName('entry').length;
+
           expect(entries.length).not.toBe(0);
         });
 
