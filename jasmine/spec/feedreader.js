@@ -56,8 +56,8 @@ $(function() {
 
     /* TODO: Write a new test suite named "The menu" */
     describe('The Menu', function() {
-        var bodyClass = document.querySelector('body');
-        var menuVisible;
+        let bodyClass = document.querySelector('body');
+        let menuVisible;
 
         if (bodyClass.classList.contains('menu-hidden')) {
         menuVisible = true;
@@ -108,7 +108,9 @@ $(function() {
           });
 
         it('loadFeed is complete and contains at least one entry', function() {
-          expect(allFeeds.length).not.toBe(0);
+          let feed = document.querySelector('.feed')
+          let entries = feed.getElementsByClassName('entry').length;
+          expect(entries.length).not.toBe(0);
         });
 
     });
