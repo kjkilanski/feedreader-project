@@ -49,13 +49,7 @@ $(function() {
      */
     describe('The Menu', function() {
         let bodyClass = document.querySelector('body');
-        let menuVisible;
-
-        if (bodyClass.classList.contains('menu-hidden')) {
-          menuVisible = false;
-        } else {
-          menuVisible = true;
-        }
+        let menuVisible = !bodyClass.classList.contains('menu-hidden');
 
         /* Test that ensures the menu element is hidden by default*/
         it('is hidden by default', function() {
@@ -66,12 +60,13 @@ $(function() {
          * is clicked.
          */
         it("visibility changes when clicked", function () {
-          if (bodyClass.classList.contains('menu-hidden')) {
-            expect(menuVisible).toBe(false);
-          } else {
-            expect(menuVisible).toBe(true);
-          }
-        });
+
+          document.getElementById('menu-icon-link').click();
+          expect(bodyClass.classList.contains('menu-hidden')).toBe(false);
+
+          document.getElementById('menu-icon-link').click();
+          expect(bodyClass.classList.contains('menu-hidden')).toBe(true);
+      });
 
     });
 
